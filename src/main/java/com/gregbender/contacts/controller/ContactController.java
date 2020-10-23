@@ -19,8 +19,9 @@ public class ContactController {
     }
 
     @GetMapping("/contact/{id}")
-    public List<Contact> getContactById(@PathVariable("id") int id) {
-        return contactService.getAllContacts();
+    public Contact getContactById(@PathVariable("id") String id) {
+
+        return contactService.getContact(id);
     }
 
     @PostMapping("/contact")
@@ -29,15 +30,15 @@ public class ContactController {
         return "{\"response\": \"ok\"}";
     }
 
+    // TODO - currently a POST with an ID is used to update existing object
+    // rest standards should be a PUT to this path below.
     @PutMapping("/contact/{id}")
     public List<Contact> updateContact(@PathVariable("id") int id) {
-
         return contactService.getAllContacts();
     }
 
     @DeleteMapping("/contact/{id}")
     public String deleteContact(@PathVariable("id") String id) {
-        System.out.println("trying to delete" + id);
         contactService.deleteContact(id);
         return "{status:done}";
     }

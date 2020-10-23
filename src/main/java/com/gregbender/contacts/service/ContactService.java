@@ -21,7 +21,11 @@ public class ContactService {
     }
 
     public void updateContact(Contact updatedContact) {
+        //mongoTemplate.findAndReplace(Query.query())
+    }
 
+    public Contact getContact(String id) {
+        return mongoTemplate.findById(id, Contact.class);
     }
 
     public void deleteContact(String id) {
